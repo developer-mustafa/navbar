@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>navbar</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;1,300&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f2146;
+      color: white;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      padding: 20px;
+      text-decoration: none;
+      font-size: 26px;
+    }
+
+    li a:hover {
+      background-color: #102870;
+    }
+
+    .responsive-nav .active a {
+      background-color: #e6e0e0;
+      color: black;
+    }
+
+    img {
+      width: 100%;
+      height: 35%;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    /* Add CSS to hide the ul element when the hamburger icon is clicked */
+    .hide {
+      display: none;
+    }
+
+    /* Add CSS to show the ul element when the hamburger icon is clicked */
+    .show {
+      display: block;
+    }
+
+    /* Add CSS for the hamburger icon */
+    .hamburger {
+      display: none;
+      font-size: 36px;
+      cursor: pointer;
+      color: rgb(250, 72, 72);
+      float: right;
+      margin-top: 20px;
+      margin-right: 20px;
+    }
+
+    /* Add CSS to change the hamburger icon color on hover */
+    .hamburger:hover {
+      color: #102870;
+    }
+
+    /* Add CSS for the mobile device media query */
+    @media only screen and (max-width: 576px) {
+      li {
+        float: none;
+      }
+
+      li a {
+        font-size: 18px;
+      }
+
+      /* Show the hamburger icon */
+      .hamburger {
+        display: block;
+      }
+
+      /* Hide the ul element */
+      ul {
+        position: relative;
+        display: none;
+      }
+
+      /* Show the ul element when the hamburger icon is clicked */
+      ul.show {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <ul id="responsive-nav"">
+          <li><a href=" index.html">Home</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="link.html">Link</a></li>
+      </ul>
+
+      <!-- Add the hamburger icon and onclick event listener -->
+      <span class="material-symbols-outlined hamburger" onclick="toggleNavbar()" id="hamburger-icon">
+        menu
+      </span>
+      <div class="header">
+        <img src="./img/garden.jpg" alt="">
+      </div>
+    </header>
+
+
+
+    <h1>Home</h1>
+    <script>
+      function toggleNavbar() {
+        var nav = document.getElementById("responsive-nav");
+        var hamburger = document.getElementById("hamburger-icon");
+
+        // Toggle the "show" class on the navbar
+        nav.classList.toggle("show");
+
+        // Change the hamburger icon depending on the navbar state
+        if (nav.classList.contains("show")) {
+          hamburger.innerHTML = "close";
+        } else {
+          hamburger.innerHTML = "menu";
+        }
+      }
+
+
+
+      var navItems = document.querySelectorAll("#responsive-nav li");
+
+      navItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+          navItems.forEach(function (item) {
+            item.classList.remove("active");
+          });
+          this.classList.add("active");
+        });
+      });
+
+    </script>
